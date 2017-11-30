@@ -1,0 +1,11 @@
+zookeeper应用场景：
+
+1）分布式锁及Leader选举
+	http://blog.csdn.net/dc_726/article/details/46475633
+	zookeeper在elastic-job中的实现：
+	https://github.com/elasticjob/elastic-job/tree/master/elastic-job-common/elastic-job-common-core/src/main/java/com/dangdang/ddframe/job/reg/zookeeper
+	Zookeeper目前的znode分四类，config，servers，execution，leader。
+	config用于保存分布式作业的全局控制，如，分多少片，要不要执行misfire，cron表达式。
+	servers用于注册作业服务器状态和分片信息。execution以分片的维度存储作业运行时状态。
+	leader用于存储主节点。elastic-job作业执行是无中心化的，但主节点起到协调的作用，如：重分片、清理上次运行时信息等。
+
